@@ -26,7 +26,6 @@ class TrackPrice:
     
     def __init__(self):
         self.url=URL
-
         self.headers = {"User-Agent": UserAgent}
         self.title = ''
 

@@ -20,6 +20,8 @@ try:
     UserAgent = config.get('config', 'UserAgent') 
     YOUR_EMAIL = config.get('config', 'YOUR_EMAIL') 
     YOUR_PASSWORD = config.get('config', 'EMAIL_PASSWORD') 
+    PRICE = config.get('config', 'DESIRED_PRICE')
+
 except:
     print("please add all the parameters in config file")
 
@@ -41,7 +43,7 @@ class TrackPrice:
         price = soup.find(id="priceblock_ourprice").get_text()
         converted_price = float(price[1:6].replace(',',''))
 
-        if(converted_price < 1000):
+        if(converted_price < float(PRICE)):
             self.send_mail()
 
     def send_mail(self):

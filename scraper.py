@@ -2,19 +2,32 @@ import requests
 from bs4 import BeautifulSoup
 import smtplib
 import time
+import configparser
+
+
+#init config file 
+try:
+    config = configparser.ConfigParser()
+    config.read('config.ini')
+
+except:
+    print("NO config file found! please make sure config file exists and the path is correct")
+
+
+#init all the variables
+
+URL = config.get('config', 'URL')
+UserAgent = config.get('config', 'UserAgent') 
+YOUR_EMAIL = config.get('config', 'YOUR_EMAIL') 
+YOUR_PASSWORD = config.get('config', 'EMAIL_PASSWORD') 
 
 
 class TrackPrice:
-
-    URL = '' #
-    HEADERS = 'ENTER_USER_AGENT_INFO_HERE' #you can find this by simply Googling: what is my user agent
-    YOUR_EMAIL = 'ENTER_YOUR_EMAIL_HERE' #'example@abc.com'
     
-
     def __init__(self):
         self.url=URL
 
-        self.headers = {"User-Agent": HEADERS}
+        self.headers = {"User-Agent": UserAgent}
         self.title = ''
 
 
@@ -37,7 +50,7 @@ class TrackPrice:
         server.starttls()
         server.ehlo()
 
-        server.login('ENTER_YOUR_EMAIL', 'ENTER YOUR PASSWORD')
+        server.login(YOUR_EMAIL, YOUR_PASSWORD)
 
         subject = 'Price for' + self.title + 'fell down!'
 
@@ -46,12 +59,12 @@ class TrackPrice:
         msg = f"Subject: {subject}\n\n{body}"
 
         server.sendmail(
-            'ENTER_YOUR_EMAIL',
-            'ENTER_YOUR_EMAIL',
+            YOUR_EMAIL,
+            YOUR_EMAIL,
             msg
         )
         
-        print('HEY EMAIL HAS BEEN SENT')
+        print('HEY EMAIL HAS BEEN SENT !')
 
         server.quit()
 

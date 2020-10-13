@@ -5,11 +5,16 @@ import time
 
 
 class TrackPrice:
-    
-    def __init__(self):
-        self.url="https://www.amazon.com/Acer-Predator-i7-9750H-Keyboard-PH315-52-78VL/dp/B07QXLFLXT/ref=sr_1_6?dchild=1&keywords=helios+300&qid=1602549601&sr=8-6"
 
-        self.headers = {"User-Agent": 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Safari/537.36'}
+    URL = '' #
+    HEADERS = 'ENTER_USER_AGENT_INFO_HERE' #you can find this by simply Googling: what is my user agent
+    YOUR_EMAIL = 'ENTER_YOUR_EMAIL_HERE' #'example@abc.com'
+    
+
+    def __init__(self):
+        self.url=URL
+
+        self.headers = {"User-Agent": HEADERS}
         self.title = ''
 
 

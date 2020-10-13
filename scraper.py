@@ -24,4 +24,20 @@ def send_mail():
 
     server.login('ENTER_YOUR_EMAIL', 'ENTER YOUR PASSWORD')
 
+    subject = 'Price fell down!'
+
+    body = 'Check the amazon link ' + url
+
+    msg = f"Subject: {subject}\n\n{body}"
+
+    server.sendmail(
+        'ENTER_YOUR_EMAIL'
+    )
+
+    print('HEY EMAIL HAS BEEN SENT')
+
+    server.quit()
+
+
+
 print(converted_price)

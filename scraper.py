@@ -15,12 +15,13 @@ except:
 
 
 #init all the variables
-
-URL = config.get('config', 'URL')
-UserAgent = config.get('config', 'UserAgent') 
-YOUR_EMAIL = config.get('config', 'YOUR_EMAIL') 
-YOUR_PASSWORD = config.get('config', 'EMAIL_PASSWORD') 
-
+try:
+    URL = config.get('config', 'URL')
+    UserAgent = config.get('config', 'UserAgent') 
+    YOUR_EMAIL = config.get('config', 'YOUR_EMAIL') 
+    YOUR_PASSWORD = config.get('config', 'EMAIL_PASSWORD') 
+except:
+    print("please add all the parameters in config file")
 
 class TrackPrice:
     

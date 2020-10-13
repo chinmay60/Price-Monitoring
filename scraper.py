@@ -14,5 +14,14 @@ price = soup.find(id="priceblock_ourprice").get_text()
 converted_price = float(price[1:6].replace(',',''))
 
 if(converted_price < 1000):
-    
+    send_mail()
+
+def send_mail():
+    server = smtplib.SMTP('smtp.gmail.com')
+    server.ehlo()
+    server.starttls()
+    server.ehlo()
+
+    server.login('ENTER_YOUR_EMAIL', 'ENTER YOUR PASSWORD')
+
 print(converted_price)
